@@ -16,7 +16,7 @@ public class playerMovement : Subject
     {
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            Attach(enemy.GetComponent<enemyMovement>());
+            //Attach(enemy.GetComponent<enemyMovement>());
         }
     }
 
