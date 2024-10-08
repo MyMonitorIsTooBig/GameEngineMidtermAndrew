@@ -972,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdff33041b8a5d64498a20347d816e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyList: []
+  _enemyArray: []
 --- !u!4 &1083979857
 Transform:
   m_ObjectHideFlags: 0
@@ -1521,6 +1521,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tPlayer: {fileID: 1814015190}
+  bulletPrefab: {fileID: 464424804867350309, guid: a7ba91ea86c05f14e9d3f198087c9a23, type: 3}
 --- !u!61 &1814015192
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class playerMovement : Subject
     [SerializeField]
     private Transform _tPlayer;
 
+    public GameObject bulletPrefab;
+
     bool _isAlive = true;
 
     private void OnEnable()
@@ -27,7 +29,8 @@ public class playerMovement : Subject
     // Update is called once per frame
     void Update()
     {
-        
+        if (_isAlive)
+        {
             if (Input.GetKeyDown(KeyCode.D) && _tPlayer.position.x > -8)
             {
                 _tPlayer.position += new Vector3(1, 0);
@@ -39,11 +42,14 @@ public class playerMovement : Subject
             }
 
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
 
-            //firing code
+                //firing code
+                Instantiate(bulletPrefab, _tPlayer);
+            }
         }
+            
         
         
     }
@@ -59,7 +65,7 @@ public class playerMovement : Subject
         {
             _isAlive = false;
             NotifyObservers();
-            Destroy(gameObject);
+            
         }
     }
 }
