@@ -59,6 +59,11 @@ public class playerMovement : Subject
         return _isAlive;
     }
 
+    public void setAlive(bool alive)
+    {
+        _isAlive = alive;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")

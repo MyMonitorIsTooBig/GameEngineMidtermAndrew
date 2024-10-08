@@ -42,4 +42,17 @@ public class enemyMovement : Observer
             MoveSpeed = 0.0f;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Player")
+        {
+            collision.gameObject.GetComponent<playerMovement>().setAlive(false);
+        }
+
+        if (collision.gameObject.name == "bullet")
+        {
+            Destroy(gameObject);
+        }
+    }
 }
