@@ -2,12 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerMovement : MonoBehaviour
+public class playerMovement : Subject
 {
 
     [SerializeField]
     private Transform _tPlayer;
 
+    bool _isAlive = true;
+
+    private void OnEnable()
+    {
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            Attach(enemy.GetComponent<enemyMovement>());
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +48,17 @@ public class playerMovement : MonoBehaviour
         
     }
 
+    public bool isAlive()
+    {
+        return _isAlive;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            _isAlive = false;
+            NotifyObservers();
             Destroy(gameObject);
         }
     }

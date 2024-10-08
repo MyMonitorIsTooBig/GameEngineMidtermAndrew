@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyMovement : MonoBehaviour
+public class enemyMovement : Observer
 {
 
     [SerializeField]
@@ -33,5 +33,13 @@ public class enemyMovement : MonoBehaviour
             _currentTime = 0.0f;
         }
 
+    }
+
+    public override void Notify(Subject subject)
+    {
+        if (subject.GetComponent<playerMovement>().isAlive() == false)
+        {
+            MoveSpeed = 0.0f;
+        }
     }
 }
